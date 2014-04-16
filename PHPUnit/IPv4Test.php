@@ -9,7 +9,7 @@
 class IPv4Test extends ControllerTestCase {
 	private $_ipv4;
 	public function setUp() {
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		parent::setUp ();
 	}
 	
@@ -49,25 +49,25 @@ class IPv4Test extends ControllerTestCase {
 		$address = "192.168.0.1/xxx.xxx.xxx.xxx";
 		try {
 			$this->assertEquals ( $this->_ipv4, $this->_ipv4->parseAddress ( $address ) );
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( "invalid netmask value", $e->getMessage () );
 		}
 		$address = "192.168.0.1/xxx";
 		try {
 			$this->assertEquals ( $this->_ipv4, $this->_ipv4->parseAddress ( $address ) );
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( "invalid netmask value", $e->getMessage () );
 		}
 		$address = "test";
 		try {
 			$this->assertEquals ( $this->_ipv4, $this->_ipv4->parseAddress ( $address ) );
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( "invalid IP address", $e->getMessage () );
 		}
 		$address = "test/test";
 		try {
 			$this->assertEquals ( $this->_ipv4, $this->_ipv4->parseAddress ( $address ) );
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( "invalid IP address", $e->getMessage () );
 		}
 	}
@@ -78,7 +78,7 @@ class IPv4Test extends ControllerTestCase {
 	public function testCalculate() {
 		try {
 			$this->_ipv4->calculate ();
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( "netmask or bitmask are required for calculation", $e->getMessage () );
 		}
 		
@@ -90,7 +90,7 @@ class IPv4Test extends ControllerTestCase {
 		$this->_ipv4->netmask = "255.255.255.255";
 		try {
 			$this->_ipv4->calculate ();
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( 'invalid IP address', $e->getMessage () );
 		}
 		
@@ -98,14 +98,14 @@ class IPv4Test extends ControllerTestCase {
 		$this->_ipv4->netmask = "255.255.255.255";
 		try {
 			$this->_ipv4->calculate ();
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( 'invalid IP address', $e->getMessage () );
 		}
 		$this->_ipv4->ip = null;
 		$this->_ipv4->netmask = "255.255.255.255";
 		try {
 			$this->_ipv4->calculate ();
-		} catch ( Teloip_Exception $e ) {
+		} catch ( Company_Exception $e ) {
 			$this->assertEquals ( 'invalid IP address', $e->getMessage () );
 		}
 	}
@@ -152,39 +152,39 @@ class IPv4Test extends ControllerTestCase {
 		$ip = "192.168.0.1";
 		$netmask = "255.255.255.255";
 		$this->assertEquals ( "192.168.0.1", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.0";
 		$this->assertEquals ( "192.168.0.0", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.128";
 		$this->assertEquals ( "192.168.0.0", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.192";
 		$this->assertEquals ( "192.168.0.0", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.224";
 		$this->assertEquals ( "192.168.0.32", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.240";
 		$this->assertEquals ( "192.168.0.32", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.248";
 		$this->assertEquals ( "192.168.0.40", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.252";
 		$this->assertEquals ( "192.168.0.40", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.254";
 		$this->assertEquals ( "192.168.0.42", $this->_ipv4->getSubnet ( $ip, $netmask ) );
-		$this->_ipv4 = new Teloip_Net_IPv4 ();
+		$this->_ipv4 = new Company_Net_IPv4 ();
 		$ip = "192.168.0.43";
 		$netmask = "255.255.255.255";
 		$this->assertEquals ( "192.168.0.43", $this->_ipv4->getSubnet ( $ip, $netmask ) );
@@ -217,7 +217,7 @@ class IPv4Test extends ControllerTestCase {
 		$network = "192.168.0.0/24";
 		$this->assertTrue ( $this->_ipv4->ipInNetwork ( $ip, $network ) );
 		$ip = "192.168.1.1";
-		$network = new Teloip_Net_IPv4 ();
+		$network = new Company_Net_IPv4 ();
 		$this->assertFalse ( $this->_ipv4->ipInNetwork ( $ip, $network ) );
 	}
 	

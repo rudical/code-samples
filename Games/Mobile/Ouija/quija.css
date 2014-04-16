@@ -1,0 +1,19 @@
+html {
+    -webkit-text-size-adjust: none; /* Prevent font scaling in landscape */
+}
+#no {
+	display: none;	
+}
+
+
+body {
+
+	background:#000;
+	background-image: url("./ouija_board.jpg");
+	background-repeat:no-repeat;
+	background-position: 0px 0px;
+
+}
+#rot {
+	color:white;
+}

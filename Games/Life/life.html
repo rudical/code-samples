@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Game of Life</title>
+<script type="text/javascript" src="jquery-1.4.js"></script>
+<script type="text/javascript" src="cell.js"></script>
+<script type="text/javascript" src="board.js"></script>
+<script type="text/javascript" src="get.js"></script>
+<script type="text/javascript" src="loadlife.js"></script>
+<script type="text/javascript"> 
+
+</script>
+<style type="text/css">
+canvas {
+	border: 1px solid black;
+	float: left;
+}
+#cycle {
+	width: 100px;
+	float: left;
+}
+#selectorPanel {
+	float: left;
+	width: 300px;
+	height: 400px;
+
+}
+#controlPanel {
+
+}
+.button {
+	float: left;
+}
+.clear {
+  clear:both;	
+}
+</style>
+</head>
+<body >
+
+<canvas id="gameboard" width="400" height="400"></canvas>
+<div id="selectorPanel">
+	<div class="selectGame">
+    	<table>
+        	<tr>
+            	<td>Select Game: </td>
+                <td><input type="radio" id="game1" name="gametype" value="1" checked > Conway</td>
+            </tr>
+            <tr>
+            	<td> </td>
+                <td><input type="radio" id="game2" name="gametype" value="2"> Aging</td>
+            </tr>
+            <tr>
+            	<td> </td>
+                <td><input type="radio" id="game3" name="gametype" value="3"> War</td>
+            </tr>
+        </table>
+    </div>
+    <div class="selectColours">
+    <br>
+        <table>
+            <tr>
+                <td>Select Colour: </td>
+                <td><input type="radio" id="type1" name="celltype" value="1" checked > <span id="cell1">Cell 1</span></td>
+                <td><input type="radio" id="type2" name="celltype" value="2"> <span id="cell2">Cell 2</span></td>
+            </tr>
+        </table>
+    	<table>
+        	<tr>
+            	<td><input id="red" type="radio" name="cellcolour" value="red"> Red</td>
+                <td><input id="orange" type="radio" name="cellcolour" value="orange">Orange</td>
+                <td><input id="yellow" type="radio" name="cellcolour" value="yellow">Yellow</td>
+                <td><input id="green" type="radio" name="cellcolour" value="green">Green</td>
+            </tr>
+            <tr>
+            	<td><input id="blue" type="radio" name="cellcolour" value="blue" checked >Blue</td>
+                <td><input id="purple" type="radio" name="cellcolour" value="purple">Purple</td>
+                <td><input id="black" type="radio" name="cellcolour" value="black">Black</td>
+                <td><input id="erase" type="radio" name="cellcolour" value="erase">Erase</td>
+            </tr>
+
+        </table>
+    </div>
+
+</div><div class="clear"></div>
+<div id="controlPanel">
+	<div id="cycle">Cycles: 0</div>
+	<button id="clear">Stop/Clear</button>
+    <button id="start">Start Game</button>
+    <button id="next">Next Cycle</button>
+</div>
+<button id="showUrl">Show State URL</button><br><a href="" id="url"></a>
+</body>
+</html>
+
+
